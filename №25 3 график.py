@@ -1,3 +1,5 @@
+import numpy as np
+import os
 import matplotlib.pyplot as plt
 def fit_mnk(x, y, delta_y):
     mean_x = np.mean(x)
