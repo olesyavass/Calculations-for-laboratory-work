@@ -40,6 +40,7 @@ for i, t in enumerate([t_1, t_2, t_3, t_4], start = 1):
     sigma_t.append(s_t)
     delta_t_sl.append(d_t_s)
 print("Среднее время:", ", ".join(f"{i:.1f}" for i in t_mean))
+print("Доверительные интервалы t, с:", ", ".join(f"[{m - d:.1f}; {m + d:.1f}]" for m, d in zip(t_mean, t_err)))
 print("Среднеквадратичная?:", ", ".join(f"{i:.2f}" for i in sigma_t))
 print("Случайная погрешность:", ", ".join(f"{i:.2f}" for i in delta_t_sl))
 print("Полные абсолютные погрешности для среднего времени:", ", ".join(f"{i:.1f}" for i in t_err))
@@ -50,9 +51,11 @@ T_err = t_err/10
 y = (t_mean/10)**2
 delta_y = 2*t_mean*t_err/100
 print("Период:", ", ".join(f"{i:.2f}" for i in T))
+print("Доверительные интервалы T, с:", ", ".join(f"[{m - d:.2f}; {m + d:.2f}]" for m, d in zip(T, T_err)))
 print("Полные абсолютные погрешности для периодов:", " ,".join(f"{i:.2f}" for i in T_err))
 print("Квадрат периода:", ", ".join(f"{i:.2f}" for i in y))
 print("Полные абсолютные погрешности для квадратов периодов:", " ,".join(f"{i:.2f}" for i in delta_y))
+print("Доверительные интервалы T^2, с:", ", ".join(f"[{m - d:.2f}; {m + d:.2f}]" for m, d in zip(y, delta_y)))
 M = np.array([0.1, 0.2, 0.3, 0.4])
 delta_M = 0.001
 x = M
@@ -73,7 +76,7 @@ plt.grid(True, linestyle='--', alpha=0.5)
 plt.legend(frameon=True, fontsize=9)
 plt.tight_layout()
 script_dir = os.path.dirname(os.path.abspath(__file__))
-save_path = os.path.join(script_dir, '1graph.pdf')
+save_path = os.path.join(script_dir, '1`graph.pdf')
 plt.savefig(save_path)
 print(f"файл сохранен: {save_path}")
 plt.show()
